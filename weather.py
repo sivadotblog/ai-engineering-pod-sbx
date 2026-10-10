@@ -28,11 +28,11 @@ def current_temperature(latitude: float, longitude: float) -> float:
         raise RuntimeError(f"Failed to fetch weather data: {err}") from err
 
     if not isinstance(data, dict):
-        raise RuntimeError("Invalid JSON payload: expected JSON object")
+        raise RuntimeError("Invalid JSON payload: expected JSON object")  # noqa: TRY004
 
     current = data.get("current")
     if not isinstance(current, dict):
-        raise RuntimeError("Response missing 'current' object")
+        raise RuntimeError("Response missing 'current' object")  # noqa: TRY004
 
     if "temperature_2m" not in current or current["temperature_2m"] is None:
         raise RuntimeError("Response missing 'temperature_2m' field in 'current'")
